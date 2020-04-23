@@ -1,4 +1,5 @@
-﻿using DemoLIbrary;
+﻿using Autofac;
+using DemoLIbrary;
 using System;
 
 namespace DependencyInjectionTest
@@ -7,9 +8,11 @@ namespace DependencyInjectionTest
     {
         static void Main(string[] args)
         {
-            BuisnessLogic buisnessLogic = new BuisnessLogic();
+            var container = ContainerConfig.Configure();
+            using var scope = container.BeginLifetimeScope();
+            var app = scope.Resolve<IApplication>();
 
-            buisnessLogic.ProcessData();
+            app.Run();
 
             Console.ReadLine();
         }

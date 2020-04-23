@@ -15,6 +15,7 @@ namespace DependencyInjectionTest
             var builder = new ContainerBuilder();
 
             builder.RegisterType<BuisnessLogic>().As<IBuisnessLogic>();
+            builder.RegisterType<Application>().As<IApplication>();
             builder.RegisterAssemblyTypes(Assembly.Load(nameof(DemoLibrary)))
                    .Where(t => t.Namespace.Contains("Utilities"))
                    .As(t => t.GetInterfaces().FirstOrDefault(i => i.Name == "I" + t.Name));
