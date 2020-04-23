@@ -3,14 +3,20 @@ using System;
 
 namespace DemoLIbrary
 {
-    public class BuisnessLogic
+    public class BuisnessLogic : IBuisnessLogic
     {
+
+        ILogger logger;
+        IDataAccess dataAccess;
+        public BuisnessLogic(ILogger logger, IDataAccess dataAccess)
+        {
+            this.logger = logger;
+            this.dataAccess = dataAccess;
+        }
+
 
         public void ProcessData()
         {
-            Logger logger = new Logger();
-            DataAccess dataAccess = new DataAccess();
-
             logger.Log("Starting the processing data.");
             Console.WriteLine("Processsing the data");
             dataAccess.LoadData();
