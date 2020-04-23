@@ -14,7 +14,6 @@ namespace DemoLIbrary
             this.dataAccess = dataAccess;
         }
 
-
         public void ProcessData()
         {
             logger.Log("Starting the processing data.");
